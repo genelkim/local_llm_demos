@@ -21,3 +21,7 @@ You can lift the `llm` declaration and put it in place of any existing `langchai
 
 # Note
 This method theoretically should also work for the `70b` models, but there seems to be a bug on the `llama.cpp` side. Feel free to open a pull request or an issue if you find a way to fix that.
+
+# Attribution
+This is based on [Rik's llama 2 demo](https://github.com/infiniterik/llama_demo).
+
