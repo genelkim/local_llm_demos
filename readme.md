@@ -11,6 +11,10 @@ The models directory here is meant to be a shared spot for downloading models. T
 The dependencies are listed in `requirements.txt`. Make sure you are using the latest version of both libraries.
 ```pip install -r requirements.txt```
 
+### Step 2b: Install llama-cpp-python with CUBLAS
+Now we'll reinstall llama-cpp-python with CUBLAS on.
+```CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python --no-cache-dir```
+
 ## Step 3: Replace the model path
 The direct path to the `.gguf` file for your model is entered to the `model_path` parameter in `LlamaCpp` in `gguf.py` and `LlamaCppEmbeddings` in `embeddings.py`. Make sure to update that path to match your own file system. `llama.cpp` seems to require an absolute path.
 
