@@ -12,8 +12,8 @@ The dependencies are listed in `requirements.txt`. Make sure you are using the l
 ```pip install -r requirements.txt```
 
 ### Step 2b: Install llama-cpp-python with CUBLAS
-Now we'll reinstall llama-cpp-python with CUBLAS on.
-```CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python --no-cache-dir```
+Now we'll reinstall llama-cpp-python with CUBLAS on. NOTE: the "0.2.55" version is a temporary fix due to [this open issue](https://github.com/abetlen/llama-cpp-python/issues/1269) in llama-cpp-python. It should be removed when the issue is resolved and integrated into most recent package version.
+```CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python==0.2.55 --no-cache-dir```
 
 ## Step 3: Replace the model path
 The direct path to the `.gguf` file for your model is entered to the `model_path` parameter in `LlamaCpp` in `gguf.py` and `LlamaCppEmbeddings` in `embeddings.py`. Make sure to update that path to match your own file system. `llama.cpp` seems to require an absolute path.
