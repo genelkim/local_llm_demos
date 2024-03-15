@@ -1,8 +1,7 @@
-from langchain.llms import LlamaCpp
-from langchain.prompts import PromptTemplate
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-
+from langchain.prompts import PromptTemplate
+from langchain_community.llms import LlamaCpp
 
 # make the templates
 template = """Question: {question}
@@ -18,12 +17,10 @@ callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
 # Make sure the model path is correct for your system!
 llm = LlamaCpp(
-    model_path="/home/gene/research/llms/gguf-llms/models/mistral-7b-v0.1.Q4_K_M.gguf",
+    model_path="/home/gene/research/llms/gguf_llms/models/mistral-7b-v0.1.Q4_K_M.gguf",
     callback_manager=callback_manager,
     verbose=True,
     n_ctx=2048,
-#    f16_kv=True,
-#    n_gpu_layers=10, # How many layers to offload to gpu?
 )
 
 prompt = """
@@ -31,5 +28,5 @@ Question: A rap battle between Stephen Colbert and John Oliver
 """
 
 # Run the prompt
-llm(prompt)
+llm.invoke(prompt)
 

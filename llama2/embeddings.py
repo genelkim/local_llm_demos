@@ -1,7 +1,4 @@
-from langchain.embeddings import LlamaCppEmbeddings
-from langchain import PromptTemplate
-from langchain.callbacks.manager import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain_community.embeddings import LlamaCppEmbeddings
 
 # Make sure the model path is correct for your system!
 llm = LlamaCppEmbeddings(
@@ -10,10 +7,6 @@ llm = LlamaCppEmbeddings(
     n_ctx=2048,
     f16_kv=True, 
 )
-
-prompt = """
-Question: A rap battle between Stephen Colbert and John Oliver
-"""
 
 # Example texts.
 texts = [
