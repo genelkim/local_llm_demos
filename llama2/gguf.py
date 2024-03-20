@@ -20,7 +20,8 @@ llm = LlamaCpp(
     callback_manager=callback_manager,
     verbose=True,
     n_ctx=2048,
-    f16_kv=True, 
+#    f16_kv=True,
+    n_gpu_layers=41,
 )
 
 prompt = """
