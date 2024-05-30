@@ -1,8 +1,7 @@
-from langchain.llms import LlamaCpp
-from langchain import PromptTemplate
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-
+from langchain.prompts import PromptTemplate
+from langchain_community.llms import LlamaCpp
 
 # make the templates
 template = """Question: {question}
@@ -21,7 +20,8 @@ llm = LlamaCpp(
     callback_manager=callback_manager,
     verbose=True,
     n_ctx=2048,
-    f16_kv=True, 
+#    f16_kv=True,
+    n_gpu_layers=41,
 )
 
 prompt = """
@@ -29,6 +29,6 @@ Question: A rap battle between Stephen Colbert and John Oliver
 """
 
 # Run the prompt
-llm(prompt)
+llm.invoke(prompt)
 
 # You can use this in any langchain prompt in place of your existing llm

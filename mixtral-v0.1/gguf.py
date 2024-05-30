@@ -3,6 +3,7 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import LlamaCpp
 
+
 # make the templates
 template = """Question: {question}
 
@@ -17,11 +18,12 @@ callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
 # Make sure the model path is correct for your system!
 llm = LlamaCpp(
-    model_path="/home/gene/research/llms/gguf_llms/models/mistral-7b-v0.1.Q4_K_M.gguf",
+    model_path="/home/gene/research/llms/gguf_llms/models/mixtral-8x7b-v0.1.Q4_K_M.gguf",
     callback_manager=callback_manager,
     verbose=True,
     n_ctx=2048,
-    n_gpu_layers=33, # How many layers to offload to gpu?
+    f16_kv=True,
+    n_gpu_layers=28, # How many layers to offload to gpu?
 )
 
 prompt = """

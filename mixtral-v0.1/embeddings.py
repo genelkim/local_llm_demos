@@ -2,9 +2,9 @@ from langchain_community.embeddings import LlamaCppEmbeddings
 
 # Make sure the model path is correct for your system!
 llm = LlamaCppEmbeddings(
-    model_path="/home/gene/research/llama-2/models/llama-2-13b.Q4_K_M.gguf",
+    model_path="/home/gene/research/llms/gguf_llms/models/mixtral-8x7b-v0.1.Q4_K_M.gguf",
     verbose=True,
-    n_gpu_layers=41,
+    n_gpu_layers=28, # How many layers to offload to gpu?
 )
 
 # Example texts.
@@ -17,7 +17,6 @@ texts = [
 
 # Run texts.
 results = llm.embed_documents(texts)
-
 individual_results = [
     llm.embed_query(text)
     for text
