@@ -5,7 +5,7 @@ llm = LlamaCppEmbeddings(
     model_path="/home/gene/research/llms/gguf_llms/models/mistral-7b-v0.1.Q4_K_M.gguf",
     verbose=True,
     n_ctx=2048,
-    f16_kv=True, 
+    n_gpu_layers=33,
 )
 
 # Example texts.
@@ -16,7 +16,7 @@ texts = [
 ]
 
 
-# Run texts.
+# Run texts through two different methods.
 results = llm.embed_documents(texts)
 individual_results = [
     llm.embed_query(text)
